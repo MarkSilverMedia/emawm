@@ -1,0 +1,276 @@
+<!--
+
+EMAWM One-Year Aniversary Theme
+A complete re-write of the EMAWM theme + some new bells & whistles!
+Created by Mark Silver
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        
+        <title>{Title}</title>
+        
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        
+        <meta name="description" content="{MetaDescription}" />
+        <meta name='text:Nav' content='' />
+        <meta name='text:Disqus Shortname' content='' />
+        
+        <style>
+        
+        @import url(https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900,300italic,700italic|Indie+Flower);
+        
+            body {
+                
+                background-color: #336699;
+                font-family: 'Lato';
+                
+            }
+            
+            .nl:hover {
+                
+                font-weight: bold;
+                
+            }
+            
+            #sidebar {
+                
+                background-color: grey;
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 19.5%;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+                
+            }
+            
+            #sidebar a {
+                
+                color: black;
+                
+            }
+            
+            #sidebar hr {
+                
+                border-color: black;
+                
+            }
+            
+            .a_blk {
+                
+                color: black;
+                
+            }
+            
+            #footer {
+                
+                position: fixed;
+                bottom: 0;
+                width: 19.5%;
+                font-size: 10px;
+                
+            }
+            
+            #posts {
+                
+                position: absolute;
+                width: 70%;
+                left: 25%;
+                top: 0;
+                list-style-type: none;
+                
+            }
+            
+            .post, .fillwhite {
+                
+                background-color: white;
+                padding: 5px;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+                
+            }
+            
+            .likes_and_reblog_buttons img {
+                
+                height: 20px;
+                width: 20px;
+                
+            }
+            
+            .ilf {
+                
+                display: inline-flex;
+                
+            }
+            
+            .tags {
+                
+                color: black;
+                font-size: 12px;
+                
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div id="sidebar">
+            
+            <center>
+            
+            <a href="/"><h2>EMAWM</h2></a>
+            
+            <form action="/search" method="get">
+    <input type="text" name="q" value="{SearchQuery}"/>
+    <input type="submit" value="Search"/>
+</form>
+
+
+            
+            {text:Nav}
+            
+            <div id="footer">
+                
+                Copyright &copy 2017 The EMAWM Team
+                
+            </div>
+                
+            </center>
+            
+        </div>
+        
+        
+            
+            <div id="posts"><br>{block:SearchPage}<center><div class="fillwhite"><b>{SearchResultCount} Search Results returned for "{SearchQuery}"</b></div></center><br>{/block:SearchPage}{block:TagPage}<center><div class="fillwhite"><b>Posts tagged #{Tag}</b></div></center><br>{/block:TagPage}
+            {block:Posts}<div class="post">{block:Date}<b>{DayOfMonth}{DayOfMonthSuffix} of {Month} {Year}</b><br>{/block:Date}</div>{block:Text}
+                    <li class="post text">
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}{Body}
+                    </li>
+                {/block:Text}{block:Photo}
+                    <li class="post photo">
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Photo}{block:Panorama}
+                    <li class="post panorama">
+                        {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                        {LinkCloseTag}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Panorama}{block:Photoset}
+                    <li class="post photoset">
+                        {Photoset-500}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Photoset}{block:Quote}
+                    <li class="post quote">
+                        "{Quote}"
+
+                        {block:Source}
+                            <div class="source">{Source}</div>
+                        {/block:Source}
+                    </li>
+                {/block:Quote}{block:Link}
+                    <li class="post link">
+                        <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                        {block:Description}
+                            <div class="description">{Description}</div>
+                        {/block:Description}
+                    </li>
+                {/block:Link}{block:Chat}
+                    <li class="post chat">
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}
+
+                        <ul class="chat">
+                            {block:Lines}
+                                <li class="{Alt} user_{UserNumber}">
+                                    {block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}{Line}
+                                </li>
+                            {/block:Lines}
+                        </ul>
+                    </li>
+                {/block:Chat}{block:Video}
+                    <li class="post video">
+                        {Video-500}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Video}{block:Audio}
+                    <li class="post audio">
+                        {AudioEmbed}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Audio}
+                
+                <div class="fillwhite"><div class="like_and_reblog_buttons"><div class="ilf">
+                {LikeButton}&nbsp;{ReblogButton}&nbsp;<a href="{Permalink}"><img src="http://www.gvate.com/wp-content/uploads/2015/05/Permalink_Best-SEO-Experts.png" height="24px" width="24px"></a>{block:IfDisqusShortname}&nbsp;<a href="{Permalink}#comments"><img src="https://cdn4.iconfinder.com/data/icons/basic-ui-elements/700/08_comment-512.png" height="24px" width="24px"></a>&nbsp;{block:IndexPage}<a class="dsq-comment-count" href="{Permalink}#disqus_thread">Comment(s)</a>
+<script type="text/javascript">
+    var disqus_shortname = '{text:Disqus Shortname}';
+
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+{/block:IndexPage}{/block:IfDisqusShortname}&nbsp;{block:HasTags}{block:Tags}&nbsp;<a class="tags" href="{TagURL}">#{Tag}</a>&nbsp;{/block:Tags}{/block:HasTags}
+                </div></div>
+                
+                
+                </div><br>{/block:Posts}
+                
+                <center><div class="fillwhite">{block:PreviousPage}
+                <a href="{PreviousPage}">&#171; Previous Page</a>
+            {/block:PreviousPage} | <a href="/archive">Site Archive</a> | {block:NextPage}
+                <a href="{NextPage}">Next Page &#187;</a>
+            {/block:NextPage}</div></center>
+            
+            <br>
+            
+            {block:IfDisqusShortname}
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '{text:Disqus Shortname}'; // Required - Enter shortname in Tumblr Theme Options
+    var disqus_url = '{Permalink}'; 
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+{/block:IfDisqusShortname}
+                
+        </div>
+        
+    </body>
+    
+</html>
