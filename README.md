@@ -1,2 +1,2 @@
-# emawm
-Source code for http://emawm.tk &amp; closely-related experiments.
+# EMAWM
+EMAWM (http://emawm.tk) is a website where a few internet friends post slick demos of their music. The EMAWM Github repository currently serves as the way to get the source code for the main EMAWM website, and probably closely-related projects in the near future. The EMAWM website is hosted on tumblr, and its source code (index.html) is based around tumblr's API. Do feel free to contribute code if you have ideas for how to improve upon this website's layout & whatnot, as I'm open to trying something new.
